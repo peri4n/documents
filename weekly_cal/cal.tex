@@ -1,0 +1,39 @@
+\documentclass[tikz,a4paper,landscape]{standalone}
+\usepackage{tgheros,tikz,array}
+\usetikzlibrary{calendar}
+\begin{document}
+\sffamily
+\newcommand\daytext[2]{%
+  \begin{tabular}{|>{\mdseries\tiny}r|p{1.5cm}|}
+    \multicolumn{2}{c}{#1} \\
+    \multicolumn{2}{c}{#2\color{black}} \\[1ex]
+    \hline
+     6:00 & \\\hline
+     7:00 & \\\hline
+     8:00 & \\\hline\hline
+     9:00 & \\\hline
+    10:00 & \\\hline
+    11:00 & \\\hline
+    12:00 & \\\hline\hline
+     1:00 & \\\hline
+     2:00 & \\\hline\hline
+     3:00 & \\\hline
+     4:00 & \\\hline
+     5:00 & \\\hline
+     6:00 & \\\hline\hline
+     7:00 & \\\hline
+     8:00 & \\\hline
+     9:00 & \\\hline\hline
+    10:00 & \\\hline
+    11:00 & \\\hline
+  \end{tabular}
+}
+\begin{tikzpicture}
+  \calendar (cal)
+  [dates=2019-06-03 to 2019-06-09,day list right,day xshift=3cm,
+  day text={\daytext{\%wt}{\large\%d-}}]%\ooalign{\Huge\%d-\cr\hidewidth\raisebox{1cm}{\%wt}\hidewidth}}]
+  if (weekend) [font=\bfseries]
+  if (Sunday) [red];
+  \node[above right,font=\bfseries\Large] at (cal-2019-06-03.north west){June 03-- June 09, 2019};
+\end{tikzpicture}
+\end{document}
